@@ -1,0 +1,2 @@
+# dws
+Django Web Store
