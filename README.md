@@ -20,10 +20,15 @@ To install DWS you need to do following steps:
 - Add .env file into app directory and add settings e.g.:
 
 SECRET_KEY=yoursecretkey
+
 DATABASE_NAME=databsename
+
 DATABASE_USER=databaseuser
+
 DATABASE_PASS=databasepass
+
 DATABASE_HOST=localhost
+
 ALLOWED_HOST=yourhost
 
 - Make migrations
