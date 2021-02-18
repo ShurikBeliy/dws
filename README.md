@@ -17,6 +17,7 @@ Before installing this project you should install:
 To install DWS you need to do following steps:
 - Create virtual environment for python (highly recommended)
 - Install requirements from requirements.txt
+- Add logs/ directory to base directory
 - Add .env file into app directory and add settings e.g.:
 
 SECRET_KEY=yoursecretkey
