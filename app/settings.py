@@ -54,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.WorkTimeLog',
+    'core.middleware.CountQueryLog',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -142,3 +144,51 @@ STATICFILES_FINDERS = [
 ]
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# LOGGING
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'url': {
+            'format': '%(asctime)s %(name)-22s %(message)-40s %(method)s %(url)s'
+        },
+    },
+    'handlers': {
+        'middleware_debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'middleware_debug.log'),
+            'formatter': 'url'
+        },
+        'middleware_warning': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'middleware_warning.log'),
+            'formatter': 'url'
+        },
+        'vews_exception': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'view_exception.log'),
+            'formatter': 'url'
+        },
+    },
+    'loggers': {
+        'core.middleware': {
+            'handlers': ['middleware_debug'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'core.middleware': {
+            'handlers': ['middleware_warning'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+        'catalog.views': {
+            'handlers': ['vews_exception'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
