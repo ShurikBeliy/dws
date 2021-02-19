@@ -30,7 +30,7 @@ class CountQueryLog:
         cnt_queries=len(connection.queries)
         extra={'method':request.method, 'url': request.build_absolute_uri()}
         logger.debug('Page has {} queries'.format(cnt_queries), extra=extra)
-        #add warning for pages that have more than 10 queries or add to debug
+        #add warning for pages that have more than 10 queries
         if cnt_queries > 9:
             logger.warning('Page has {} queries that more than 10'.format(cnt_queries), extra=extra)
 
