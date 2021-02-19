@@ -1,9 +1,6 @@
 from django.shortcuts import render
 from core.views import BaseView
 
-import logging
-
-
 class CategoryDetail(BaseView):
     """ View for index page """
     def get(self, request, slug):
