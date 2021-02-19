@@ -2,7 +2,6 @@ from datetime import datetime
 from django.db import connection
 import logging
 
-# Get an instance of a logger
 logger = logging.getLogger(__name__)
 
 class WorkTimeLog:
@@ -14,9 +13,11 @@ class WorkTimeLog:
         start = datetime.now()
         response = self._get_response(request)
         work_time = datetime.now() - start
-        logger.debug('Work time: {}'.format(work_time), extra={'method':request.method, 'url': request.build_absolute_uri()})
+        extra={'method':request.method, 'url': request.build_absolute_uri()}
+        logger.debug('work time: {}'.format(work_time), extra=extra)
+        # add warning logs for pages that are slow
         if work_time.total_seconds()  > 0.5:
-            logger.warning('Work time more than 0.5s: {}'.format(work_time), extra={'method':request.method, 'url': request.build_absolute_uri()})
+            logger.warning('work time > 0.5s: {}'.format(work_time), extra=extra)
         return response
 
 class CountQueryLog:
@@ -26,6 +27,12 @@ class CountQueryLog:
 
     def __call__(self, request):
         response = self._get_response(request)
-        logger.debug('Count queries: {}'.format(len(connection.queries)), extra={'method':request.method, 'url': request.build_absolute_uri()})
+        cnt_queries=len(connection.queries)
+        extra={'method':request.method, 'url': request.build_absolute_uri()}
+        logger.debug('Page has {} queries'.format(cnt_queries), extra=extra)
+        #add warning for pages that have more than 10 queries or add to debug
+        if cnt_queries > 9:
+            logger.warning('Page has {} queries that more than 10'.format(cnt_queries), extra=extra)
+
         return response
 

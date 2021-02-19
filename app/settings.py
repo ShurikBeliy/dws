@@ -150,7 +150,7 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'url': {
+        'method_url': {
             'format': '%(asctime)s %(name)-22s %(message)-40s %(method)s %(url)s'
         },
     },
@@ -159,19 +159,19 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'middleware_debug.log'),
-            'formatter': 'url'
+            'formatter': 'method_url'
         },
         'middleware_warning': {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'middleware_warning.log'),
-            'formatter': 'url'
+            'formatter': 'method_url'
         },
-        'vews_exception': {
+        'views_exception': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'logs', 'view_exception.log'),
-            'formatter': 'url'
+            'formatter': 'method_url'
         },
     },
     'loggers': {
@@ -185,8 +185,8 @@ LOGGING = {
             'level': 'WARNING',
             'propagate': True,
         },
-        'catalog.views': {
-            'handlers': ['vews_exception'],
+        'core.views': {
+            'handlers': ['views_exception'],
             'level': 'ERROR',
             'propagate': True,
         },
