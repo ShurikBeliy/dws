@@ -22,6 +22,7 @@ class Item(models.Model):
     priority = models.PositiveIntegerField('Priority')
     name = models.CharField('Item', max_length=150)
     slug = models.SlugField('Slug', max_length=50, allow_unicode=True, db_index=True)
+    category = models.ForeignKey('category', verbose_name='Category', on_delete=models.CASCADE, related_name='items', null=True)
     description = models.TextField('Description', blank=True)
 
     def __str__(self):
