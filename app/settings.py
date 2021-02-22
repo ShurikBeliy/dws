@@ -91,6 +91,9 @@ DATABASES = {
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASS'),
         'HOST': env('DATABASE_HOST'),
+        'TEST': {
+            'NAME': 'test_%s' % (env('DATABASE_NAME')),
+        },
     }
 }
 

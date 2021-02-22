@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Category(models.Model):
-    """ Caegories of items """
+    """ Categories of items """
     is_active = models.BooleanField('Is active', default=False, db_index=True)
     priority = models.PositiveIntegerField('Priority')
     name = models.CharField('Category name', max_length=150)
