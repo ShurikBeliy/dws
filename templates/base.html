@@ -1,4 +1,4 @@
-{% load sass_tags %}
+{% load static sass_tags %}
 
 <!doctype html>
 <html lang="en">
@@ -8,6 +8,7 @@
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
     <link href="{% sass_src 'sass/main.scss' %}" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}"  type="image/ico">
     <title>{% block title %}Django Web Store{% endblock %}</title>
   </head>
   <body>
