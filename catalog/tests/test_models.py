@@ -1,6 +1,5 @@
 from django.test import TestCase
 from catalog.models import Item, Category
-from django.db import models
 
 class CategoryModelTest(TestCase):
 
