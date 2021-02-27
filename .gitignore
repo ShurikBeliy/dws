@@ -4,3 +4,4 @@ __pycache__/
 static/sass/*.css
 static/sass/*.css.map
 logs/
+media/
