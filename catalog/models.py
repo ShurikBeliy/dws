@@ -33,7 +33,7 @@ class Characteristic(models.Model):
 
 class CharacteristicValue(models.Model):
     """ Values for characteristics of item """
-    is_active = models.BooleanField('Is active', default=False, db_index=True)
+    is_active = models.BooleanField('Selected', default=False, db_index=True)
     characteristic = models.ForeignKey('characteristic', verbose_name='Characteristic', on_delete=models.CASCADE, related_name='values')
     item = models.ForeignKey('item', verbose_name='Item', on_delete=models.CASCADE, related_name='values')
 

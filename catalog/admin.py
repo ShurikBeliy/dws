@@ -29,10 +29,16 @@ class ItemImageInline(admin.TabularInline):
     classes = ('collapse',)
     extra = 0
 
+class CharacteristicValueInline(admin.TabularInline):
+    model = CharacteristicValue
+    fields = ('is_active','characteristic',)
+    classes = ('collapse',)
+    extra = 0
+
 @admin.register(Item)
 class ItemAdmin(ItemAdminMixin, admin.ModelAdmin):
     list_display = ('is_active', 'category_column', 'slug', 'name', 'priority',)
     list_display_links = ('name',)
     list_editable = ('is_active', 'priority',)
     search_fields = ('name','slug',)
-    inlines=(ItemImageInline,)
+    inlines=(CharacteristicValueInline, ItemImageInline)
