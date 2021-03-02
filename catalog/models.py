@@ -16,12 +16,11 @@ class Category(models.Model):
         ordering = ('priority',)
 
 class Characteristic(models.Model):
-    """ Characteristic for item If characteristic doesn't have category they are for all items
-        But it they have category they are for items in that category """
+    """ Characteristic for item """
     is_active = models.BooleanField('Is active', default=False, db_index=True)
     priority = models.PositiveIntegerField('Priority')
     name = models.CharField('Characteristic', max_length=150)
-    category = models.ForeignKey('category', verbose_name='Category', on_delete=models.CASCADE, related_name='characteristics', blank=True)
+    category = models.ForeignKey('category', verbose_name='Category', on_delete=models.CASCADE, related_name='characteristics')
 
     def __str__(self):
         return '%s' % (self.name)
