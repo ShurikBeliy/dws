@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.urls import resolve
 from .models import *
 from .admin_mixin import *
 
@@ -34,6 +35,17 @@ class CharacteristicValueInline(admin.TabularInline):
     fields = ('is_active','characteristic',)
     classes = ('collapse',)
     extra = 0
+    def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
+        field = super(CharacteristicValueInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
+        # We need to change queryset for characteristic field because we don't want to show characteristics from other categories
+        if db_field.name == 'characteristic':
+            resolved = resolve(request.path_info)
+            try: # we can have exceptions for new items
+                item = Item.objects.get(pk=resolved.kwargs['object_id'])
+                field.queryset = item.category.characteristics.filter(is_active=True)
+            except:
+                pass
+        return field
 
 @admin.register(Item)
 class ItemAdmin(ItemAdminMixin, admin.ModelAdmin):
