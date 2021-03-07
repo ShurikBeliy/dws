@@ -1,0 +1,12 @@
+.container{
+  display:grid;
+  @each $breakpoint, $width in $grid-breakpoints {
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+        grid-template-columns: $grid_offset_left $width $grid_offset_right;
+    }
+  }
+  &__row{
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+}

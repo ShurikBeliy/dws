@@ -1,0 +1,45 @@
+/* DWS */
+
+// Default colors
+$background: #f7f7f7 !default;
+$foreground: #4a4543 !default;
+
+// Normal colors
+$black:   #090300 !default;
+$red:     #db2d20 !default;
+$green:   #01a252 !default;
+$yellow:  #fded02 !default;
+$blue:    #01a0e4 !default;
+$magenta: #a16a94 !default;
+$cyan:    #b5e4f4 !default;
+$white:   #a5a2a2 !default;
+
+// Bright colors
+$black:   #5c5855 !default;
+$red:     #db2d20 !default;
+$green:   #01a252 !default;
+$yellow:  #fded02 !default;
+$blue:    #01a0e4 !default;
+$magenta: #a16a94 !default;
+$cyan:    #b5e4f4 !default;
+$white:   #f7f7f7 !default;
+
+$dws_background: $background;
+
+// Grid
+$grid-breakpoints:(
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+$grid_offset_left: auto !default;
+$grid_offset_right: auto !default;
+
+/* LOGO */
+$logo_width: 70px !default;
+$logo_height: 70px !default;
+
+/* HEADER */
+$header_height: 90px !default;

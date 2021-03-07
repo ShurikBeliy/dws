@@ -1,5 +1,4 @@
 {% load static sass_tags %}
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +11,15 @@
     <title>{% block title %}Django Web Store{% endblock %}</title>
   </head>
   <body>
-      {% block content %}
-      {% endblock %}
+    {% include 'includes/header.html' %}
+    <div class="content">
+      <div class="container">
+        <div class="container__row">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 

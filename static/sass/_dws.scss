@@ -1,0 +1,13 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:$dws_background;
+}
+
+img{
+  max-width:100%;
+}
