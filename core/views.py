@@ -13,7 +13,7 @@ class BaseView(View):
         except Exception as e:
             extra={'method':request.method, 'url': request.build_absolute_uri()}
             logger.error('Exception is: {}'.format(e), extra=extra)
-            return redirect('page_404_url')
+            response = Page404Detail.get_response(request)
 
         if isinstance(response,(dict,list)):
             return self._response(response)
@@ -31,6 +31,10 @@ class BaseView(View):
 class Page404Detail(BaseView):
     """ View for page 404 """
     def get(self, request):
+        return self.get_response(request)
+
+    @staticmethod
+    def get_response(request):
         response = render(request, '404.html', {})
         response.status_code = 404
         return response
@@ -39,3 +43,4 @@ class IndexDetail(BaseView):
     """ View for index page """
     def get(self, request):
         return render(request, 'index.html', {})
+
