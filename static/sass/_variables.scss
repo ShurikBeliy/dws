@@ -15,18 +15,18 @@ $cyan:    #b5e4f4 !default;
 $white:   #a5a2a2 !default;
 
 // Bright colors
-$black:   #5c5855 !default;
-$red:     #db2d20 !default;
-$green:   #01a252 !default;
-$yellow:  #fded02 !default;
-$blue:    #01a0e4 !default;
-$magenta: #a16a94 !default;
-$cyan:    #b5e4f4 !default;
-$white:   #f7f7f7 !default;
+$bright_black:   #5c5855 !default;
+$bright_red:     #db2d20 !default;
+$bright_green:   #01a252 !default;
+$bright_yellow:  #fded02 !default;
+$bright_blue:    #01a0e4 !default;
+$bright_magenta: #a16a94 !default;
+$bright_cyan:    #b5e4f4 !default;
+$bright_white:   #f7f7f7 !default;
 
 $dws_background: $background;
 
-// Grid
+/* GRID */
 $grid-breakpoints:(
   xs: 0,
   sm: 576px,
@@ -34,6 +34,7 @@ $grid-breakpoints:(
   lg: 992px,
   xl: 1200px
 ) !default;
+
 $grid_offset_left: auto !default;
 $grid_offset_right: auto !default;
 

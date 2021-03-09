@@ -1,6 +1,13 @@
 .logo{
   &__img{
+    display:block;
+    text-decoration:none;
     width:$logo_width;
     height:$logo_height;
+    -webkit-mask: url(/static/images/logo.svg) no-repeat center center;
+    mask: url(/static/images/logo.svg) no-repeat center center;
+    mask-size: $logo_width $logo_height;
+    -webkit-mask-size: $logo_width $logo_height;
+    background-color:$green;
   }
 }

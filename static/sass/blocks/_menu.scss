@@ -1,0 +1,23 @@
+.menu{
+  &--header{
+    margin-top:25px;
+  }
+  &__element{
+    display:inline-block;
+    padding:5px 15px 7px 15px;
+    border-left:1px solid $bright_green;
+    &:first-child{
+      margin-left:40px;
+      border-left:none;
+    }
+  }
+}
+
+.menu-link{
+  text-decoration:none;
+  &__title{
+    color:$bright_black;
+    font-family: 'Oswald', sans-serif;
+    font-weight:300;
+  }
+}
