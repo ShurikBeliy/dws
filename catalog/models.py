@@ -6,6 +6,7 @@ class Category(models.Model):
     priority = models.PositiveIntegerField('Priority')
     name = models.CharField('Category name', max_length=150)
     slug = models.SlugField('Slug', max_length=50, allow_unicode=True, db_index=True)
+    preview = models.ImageField('Preview', upload_to='category_preview/', blank=True)
 
     def __str__(self):
         return '%s' % (self.name)
