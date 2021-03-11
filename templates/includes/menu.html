@@ -10,6 +10,17 @@
     <a class="menu-link" href="/catalog/">
       <span class="menu-link__title">Catalog</span>
     </a>
+    {% if categories %}
+      <div class="popup-menu">
+        {% for category in categories %}
+          <div class="popup-menu__element">
+            <a class="menu-link" href="{% url 'category_detail_url' category.slug %}">
+              <span class="menu-link__title">{{category.name}}</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 
 </div>

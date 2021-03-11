@@ -1,7 +1,11 @@
 from catalog.models import Category, Item
 
-def get_category_active_data(slug):
-    """ Get all data of category with slug that we give """
+def get_active_categories():
+    """ Get all active categories """
+    return Category.objects.filter(is_active=True)
+
+def get_active_category_data(slug):
+    """ Get all data of active category with slug that we give """
     category = get_active_category_by_slug(slug)
     items = get_active_items_by_category_id(category.id)
     return {
