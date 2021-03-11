@@ -3,6 +3,9 @@
 {% block content %}
   <h1>{{category.name}}</h1>
   <div class="catalog">
+    <div class="catalog__filters">
+      {% include 'includes/filters.html' %}
+    </div>
     <div class="catalog__items">
       {% include 'includes/items.html' %}
     </div>
