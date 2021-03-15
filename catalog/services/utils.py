@@ -5,13 +5,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 def add_suffix_to_filename(filename, suffix):
-    """ Add prefix to image filename """
+    """ Add suffix to filename """
     path = os.path.splitext(filename)
     path = path[:1] + (suffix,) + path[1:]
     return ''.join(path)
 
 def change_filename_extension(filename, extension):
-    """ Add prefix to image filename """
+    """ Change extension of filename """
     path = os.path.splitext(filename)[:1] + (extension,)
     return '.'.join(path)
 
