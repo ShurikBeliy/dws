@@ -36,3 +36,14 @@ ALLOWED_HOST=yourhost
 - Start django server
 
 Happy usage!
+
+# Desctiption
+core - here you can find main functions and classes that might be necessary everywhere in the project. We put there middleware and main views.
+
+templates - we have a template in the root directory. That templates that we can use everywhere in the project. We also have templates in the apps, e.g. in the catalog app.
+
+catalog - main app that contains views and templates for our catalog 
+
+catalog/services - we put there main functions that work with logic. We decided that it's better to separate them because we can use them again in different parts of the project (DRY). Our models and views clean. We also can test them easily.
+
+static/sass - we put there our SASS styles. They will be automatically converted to CSS
