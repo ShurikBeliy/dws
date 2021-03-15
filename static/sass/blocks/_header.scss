@@ -1,18 +1,13 @@
 .header{
   display:grid;
-  @each $breakpoint, $width in $grid-breakpoints {
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-        grid-template-columns: $grid_offset_left $logo_width ($width - $logo_width) $grid_offset_right;
-    }
-  }
-  height:$header_height;
+  grid-template-rows:auto auto;
+  @include make-breakpoint-values($header-grid);
   &__logo{
+    margin:auto;
     padding-top:($header_height - $logo_height)/2;
-    grid-column-start: 2;
-    grid-column-end: 3;
+    @include make-breakpoint-values($header-logo);
   }
   &__menu{
-    grid-column-start: 3;
-    grid-column-end: 4;
+    @include make-breakpoint-values($header-menu);
   }
 }

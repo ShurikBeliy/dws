@@ -34,7 +34,6 @@ $grid-breakpoints:(
   lg: 992px,
   xl: 1200px
 ) !default;
-
 $grid_offset_left: auto !default;
 $grid_offset_right: auto !default;
 
@@ -44,7 +43,21 @@ $logo_height: 70px !default;
 
 /* HEADER */
 $header_height: 90px !default;
-
+$header-grid:(
+  xs: (grid-template-columns: 100%, height:auto),
+  sm: (grid-template-columns: $grid_offset_left $logo_width (576px - $logo_width) $grid_offset_right, height:$header_height),
+  md: (grid-template-columns: $grid_offset_left $logo_width (768px - $logo_width) $grid_offset_right),
+  lg: (grid-template-columns: $grid_offset_left $logo_width (992px - $logo_width) $grid_offset_right),
+  xl: (grid-template-columns: $grid_offset_left $logo_width (1200px - $logo_width) $grid_offset_right),
+) !default;
+$header-logo:(
+  xs: (grid-column-start: 1, grid-column-end: 2),
+  sm: (grid-column-start: 2, grid-column-end: 3),
+) !default;
+$header-menu:(
+  xs: (grid-column-start: 1, grid-column-end: 2),
+  sm: (grid-column-start: 3, grid-column-end: 4),
+) !default;
 
 /* MENU */
 $popup_background:$background;
@@ -53,17 +66,14 @@ $popup_border_color:$bright_green;
 /* CATALOG */
 $catalog_filters_width: 300px !default;
 $catalog_items_width: auto !default;
-
 $catalog-grid:(
   xs: (grid-template-columns: auto auto),
   md: (grid-template-columns: $catalog_items_width $catalog_filters_width),
 ) !default;
-
 $catalog-filters:(
   xs: (grid-column-start: 1, grid-column-end: 3, grid-row-start:1, grid-row-end:2),
   md: (grid-column-start: 2, grid-column-end: 3,),
 ) !default;
-
 $catalog-items:(
   xs: (grid-column-start: 1, grid-column-end: 3, grid-row-start:2, grid-row-end:3),
   md: (grid-column-start: 1, grid-column-end: 2, grid-row-start:1, grid-row-end:2),
