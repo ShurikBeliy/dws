@@ -42,6 +42,7 @@ class CategoryServiceTest(TestCase):
         value = get_active_category_data(self.slug)
         self.assertEqual(value['category'], self.category)
         self.assertQuerysetEqual(value['items'], self.items, transform=lambda x: x)
+        self.assertQuerysetEqual(value['filters'], self.filters, transform=lambda x: x)
 
     def test_get_active_category_by_slug_value(self):
         value = get_active_category_by_slug(self.slug)
