@@ -151,10 +151,6 @@ class ItemModelTest(TestCase):
         value = self.obj._meta.get_field('category').related_query_name()
         self.assertEquals(value , 'items')
 
-    def test_category_null_value(self):
-        value = self.obj._meta.get_field('category').null
-        self.assertTrue(value)
-
 
     def test_description_lable_value(self):
         value = self.obj._meta.get_field('description').verbose_name

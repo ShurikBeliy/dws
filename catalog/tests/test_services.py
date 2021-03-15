@@ -30,7 +30,7 @@ class CategoryServiceTest(TestCase):
         cls.items = Item.objects.filter(is_active=True, category_id=cls.category.id)
 
     def test_get_category_active_data_service_value(self):
-        value = get_category_active_data(self.slug)
+        value = get_active_category_data(self.slug)
         self.assertEqual(value['category'], self.category)
         self.assertQuerysetEqual(value['items'], self.items, transform=lambda x: x)
 
