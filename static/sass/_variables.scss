@@ -49,3 +49,22 @@ $header_height: 90px !default;
 /* MENU */
 $popup_background:$background;
 $popup_border_color:$bright_green;
+
+/* CATALOG */
+$catalog_filters_width: 300px !default;
+$catalog_items_width: auto !default;
+
+$catalog-grid:(
+  xs: (grid-template-columns: auto auto),
+  md: (grid-template-columns: $catalog_items_width $catalog_filters_width),
+) !default;
+
+$catalog-filters:(
+  xs: (grid-column-start: 1, grid-column-end: 3, grid-row-start:1, grid-row-end:2),
+  md: (grid-column-start: 2, grid-column-end: 3,),
+) !default;
+
+$catalog-items:(
+  xs: (grid-column-start: 1, grid-column-end: 3, grid-row-start:2, grid-row-end:3),
+  md: (grid-column-start: 1, grid-column-end: 2, grid-row-start:1, grid-row-end:2),
+) !default;

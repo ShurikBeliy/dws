@@ -1,0 +1,12 @@
+.catalog{
+  display:grid;
+  grid-template-columns: $catalog_items_width $catalog_filters_width ;
+  grid-template-rows:auto auto;
+  @include make-breakpoint-values($catalog-grid);
+  &__filters{
+    @include make-breakpoint-values($catalog-filters);
+  }
+  &__items{
+    @include make-breakpoint-values($catalog-items);
+  }
+}
