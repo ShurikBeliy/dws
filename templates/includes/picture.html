@@ -1,9 +1,9 @@
 {% load image_tag %}
-{% if preview %}
+{% if picture %}
   <picture class="picture">
-    {% get_webp_srcset preview True as webp %}
-    {% get_jpeg_srcset preview True as jpeg %}
-    {% get_png_srcset preview True as png %}
+    {% get_webp_srcset picture True as webp %}
+    {% get_jpeg_srcset picture True as jpeg %}
+    {% get_png_srcset picture True as png %}
     {% if webp %}
       <source srcset="{{webp}}" >
     {% endif %}
@@ -13,6 +13,6 @@
     {% if png %}
       <source srcset="{{png}}" >
     {% endif %}
-    <img class="picture__img" src="{{preview.url}}" alt="{{preview_name}}" />
+    <img class="picture__img" src="{{picture.url}}" alt="{{picture_name}}" />
   </picture>
 {% endif %}

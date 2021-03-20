@@ -1,13 +1,13 @@
 {% load utils_tag %}
 {% for category in categories %}
 <a href="{{category.get_absolute_url}}" class="category">
-    <div class="category__preview">
-      {% if category.preview %}
-          {% define category.preview as preview %}
-          {% define category.name as preview_name %}
-          {% include 'includes/picture.html' %}
-      {% endif %}
-    </div>
-    <div class="category__name">{{category.name}}</div>
-  </a>
+  <div class="category__preview">
+    {% if category.preview %}
+        {% define category.preview as picture %}
+        {% define category.name as picture_name %}
+        {% include 'includes/picture.html' %}
+    {% endif %}
+  </div>
+  <div class="category__name">{{category.name}}</div>
+</a>
 {% endfor %}
