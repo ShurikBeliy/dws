@@ -1,23 +1,11 @@
-{% load image_utils %}
+{% load utils_tag %}
 {% for item in items %}
   <div class="item">
     <div class="item__preview">
       {% if item.preview %}
-        <picture class="picture">
-          {% get_webp_srcset item.preview True as webp %}
-          {% get_jpeg_srcset item.preview True as jpeg %}
-          {% get_png_srcset item.preview True as png %}
-          {% if webp %}
-            <source srcset="{{webp}}" >
-          {% endif %}
-          {% if jpeg %}
-            <source srcset="{{jpeg}}" >
-          {% endif %}
-          {% if png %}
-            <source srcset="{{png}}" >
-          {% endif %}
-          <img class="picture__img" src="{{item.preview.url}}" alt="{{item.name}}" />
-        </picture>
+          {% define item.preview as preview %}
+          {% define item.name as preview_name %}
+          {% include 'includes/picture.html' %}
       {% endif %}
     </div>
     <div class="item__name">{{item.name}}</div>

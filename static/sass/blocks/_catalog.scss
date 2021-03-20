@@ -9,4 +9,7 @@
   &__items{
     @include make-breakpoint-values($catalog-items);
   }
+  &__categories{
+    @include make-breakpoint-values($catalog-categories);
+  }
 }

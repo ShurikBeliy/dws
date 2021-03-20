@@ -1,0 +1,18 @@
+{% load image_tag %}
+{% if preview %}
+  <picture class="picture">
+    {% get_webp_srcset preview True as webp %}
+    {% get_jpeg_srcset preview True as jpeg %}
+    {% get_png_srcset preview True as png %}
+    {% if webp %}
+      <source srcset="{{webp}}" >
+    {% endif %}
+    {% if jpeg %}
+      <source srcset="{{jpeg}}" >
+    {% endif %}
+    {% if png %}
+      <source srcset="{{png}}" >
+    {% endif %}
+    <img class="picture__img" src="{{preview.url}}" alt="{{preview_name}}" />
+  </picture>
+{% endif %}
