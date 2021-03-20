@@ -14,7 +14,7 @@
       <div class="popup-menu">
         {% for category in categories %}
           <div class="popup-menu__element">
-            <a class="menu-link" href="{% url 'category_detail_url' category.slug %}">
+            <a class="menu-link" href="{{category.get_absolute_url}}">
               <span class="menu-link__title">{{category.name}}</span>
             </a>
           </div>
