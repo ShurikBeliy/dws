@@ -62,6 +62,10 @@ $header-menu:(
 /* MENU */
 $popup_background:$background;
 $popup_border_color:$bright_green;
+$menu-element-first-child: (
+  xs: (margin-left:0),
+  sm: (margin-left:40px)
+) !default;
 
 /* CATALOG */
 $catalog_filters_width: 300px !default;
