@@ -9,10 +9,10 @@ class Category(models.Model):
     slug = models.SlugField('Slug', max_length=50, allow_unicode=True, db_index=True)
     preview = models.ImageField('Preview', upload_to='category_preview/', blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '%s' % (self.name)
 
-    def get_absolute_url(self):
+    def get_absolute_url(self) -> str:
         return reverse('category_detail_url', kwargs={"slug":self.slug})
 
     class Meta:
@@ -27,7 +27,7 @@ class Characteristic(models.Model):
     name = models.CharField('Characteristic', max_length=150)
     category = models.ForeignKey('category', verbose_name='Category', on_delete=models.CASCADE, related_name='characteristics')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '%s' % (self.name)
 
     class Meta:
@@ -42,7 +42,7 @@ class CharacteristicValue(models.Model):
     characteristic = models.ForeignKey('characteristic', verbose_name='Characteristic', on_delete=models.CASCADE, related_name='values')
     item = models.ForeignKey('item', verbose_name='Item', on_delete=models.CASCADE, related_name='values')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '%s' % (self.is_active)
 
     class Meta:
@@ -61,7 +61,7 @@ class Item(models.Model):
     category = models.ForeignKey('category', verbose_name='Category', on_delete=models.CASCADE, related_name='items')
     description = models.TextField('Description', blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '%s' % (self.name)
 
     class Meta:
@@ -77,7 +77,7 @@ class ItemImage(models.Model):
     alt = models.CharField('Alt', max_length=150)
     image = models.ImageField('Image', upload_to='item_image/', blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '%s' % (self.alt)
 
     class Meta:

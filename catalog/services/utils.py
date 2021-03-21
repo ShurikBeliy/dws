@@ -1,33 +1,34 @@
 import PIL
 import os
 import logging
+from typing import Union
 
 logger = logging.getLogger(__name__)
 
-def add_suffix_to_filename(filename, suffix):
+def add_suffix_to_filename(filename, suffix) -> str:
     """ Add suffix to filename """
     path = os.path.splitext(filename)
     path = path[:1] + (suffix,) + path[1:]
     return ''.join(path)
 
-def change_filename_extension(filename, extension):
+def change_filename_extension(filename, extension) -> str:
     """ Change extension of filename """
     path = os.path.splitext(filename)[:1] + (extension,)
     return '.'.join(path)
 
-def resize_image_to_width_and_return_pil_image(image, to_width):
+def resize_image_to_width_and_return_pil_image(image, to_width) -> PIL.Image:
     """ Resize image to width. Height will change accordingly. """
     filepath = image.path
     image = PIL.Image.open(filepath)
     image = image.resize( ( to_width, round( image.height * ( to_width / image.width ) ) ) )
     return image
 
-def convert_image_type_and_save(pil_image, image_type, image_path):
+def convert_image_type_and_save(pil_image, image_type, image_path) -> None:
     """ Convert image to new type and save with new path """
     webp = pil_image.convert('RGB')
     webp.save(image_path,image_type)
 
-def get_image_url_by_type(image, image_type='webp', image_width=None):
+def get_image_url_by_type(image, image_type='webp', image_width=None) -> str:
     """ Get image url. If image doesn't exists it will try to create from original """
     image_path = change_filename_extension(image.path, image_type)
     image_url = change_filename_extension(image.url, image_type)
@@ -42,7 +43,7 @@ def get_image_url_by_type(image, image_type='webp', image_width=None):
         convert_image_type_and_save(pli_image, image_type, image_path)
     return change_filename_extension(image_url, image_type)
 
-def create_and_get_image_type_urls(image, image_type, need_retina):
+def create_and_get_image_type_urls(image, image_type, need_retina) -> Union[tuple[str, str], tuple[None, str]]:
     """ Generate image for retina and image that smaller 2 times if it necessary """
     try:
         retina_image = get_image_url_by_type(image, image_type, image.width )

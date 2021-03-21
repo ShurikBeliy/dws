@@ -1,15 +1,17 @@
 from datetime import datetime
 from django.db import connection
+from django.http import HttpResponse, JsonResponse
+from typing import Union
 import logging
 
 logger = logging.getLogger(__name__)
 
 class WorkTimeLog:
     """ We use it to log time """
-    def __init__(self, get_response):
+    def __init__(self, get_response) -> None:
         self._get_response = get_response
 
-    def __call__(self, request):
+    def __call__(self, request) -> Union[HttpResponse, JsonResponse]:
         start = datetime.now()
         response = self._get_response(request)
         work_time = datetime.now() - start
@@ -22,10 +24,10 @@ class WorkTimeLog:
 
 class CountQueryLog:
     """ We use it to count queries """
-    def __init__(self, get_response):
+    def __init__(self, get_response) -> None:
         self._get_response = get_response
 
-    def __call__(self, request):
+    def __call__(self, request) -> Union[HttpResponse, JsonResponse]:
         response = self._get_response(request)
         cnt_queries=len(connection.queries)
         extra={'method':request.method, 'url': request.build_absolute_uri()}
@@ -33,6 +35,5 @@ class CountQueryLog:
         #add warning for pages that have more than 10 queries
         if cnt_queries > 9:
             logger.warning('Page has {} queries that more than 10'.format(cnt_queries), extra=extra)
-
         return response
 

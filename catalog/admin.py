@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import resolve
+from django.forms.models import ModelChoiceField
 from .models import *
 from .admin_mixin import *
 
@@ -35,7 +36,7 @@ class CharacteristicValueInline(admin.TabularInline):
     fields = ('is_active','characteristic',)
     classes = ('collapse',)
     extra = 0
-    def formfield_for_foreignkey(self, db_field, request=None, **kwargs):
+    def formfield_for_foreignkey(self, db_field, request=None, **kwargs) -> ModelChoiceField:
         field = super(CharacteristicValueInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
         # We need to change queryset for characteristic field because we don't want to show characteristics from other categories
         if db_field.name == 'characteristic':

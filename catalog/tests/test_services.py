@@ -8,7 +8,7 @@ class CategoryServiceTest(TestCase):
     slug = None
 
     @classmethod
-    def setUpTestData(cls):
+    def setUpTestData(cls) -> None:
         cls.slug = "new-category4"
 
         cls.category = Category.objects.create(
@@ -38,24 +38,24 @@ class CategoryServiceTest(TestCase):
         cls.categories = Category.objects.filter(is_active=True)
         cls.filters = Characteristic.objects.filter(is_active=True, category_id=cls.category.id)
 
-    def test_get_category_active_data_service_value(self):
+    def test_get_category_active_data_service_value(self) -> None:
         value = get_active_category_data(self.slug)
         self.assertEqual(value['category'], self.category)
         self.assertQuerysetEqual(value['items'], self.items, transform=lambda x: x)
         self.assertQuerysetEqual(value['filters'], self.filters, transform=lambda x: x)
 
-    def test_get_active_category_by_slug_value(self):
+    def test_get_active_category_by_slug_value(self) -> None:
         value = get_active_category_by_slug(self.slug)
         self.assertEqual(value, self.category)
 
-    def test_get_active_items_by_category_id_value(self):
+    def test_get_active_items_by_category_id_value(self) -> None:
         value = get_active_items_by_category_id(self.category.id)
         self.assertQuerysetEqual(value, self.items, transform=lambda x: x)
 
-    def test_get_active_categories_value(self):
+    def test_get_active_categories_value(self) -> None:
         value = get_active_categories()
         self.assertQuerysetEqual(value, self.categories, transform=lambda x: x)
 
-    def test_get_filter_by_category_id_value(self):
+    def test_get_filter_by_category_id_value(self) -> None:
         value = get_filter_by_category_id(self.category.id)
         self.assertQuerysetEqual(value, self.filters, transform=lambda x: x)
