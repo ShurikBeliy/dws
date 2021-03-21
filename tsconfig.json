@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./static/js/",
+    "module": "es6",
+    "noImplicitAny": true,
+    "outDir": "./static/js/",
+    "target": "es5"
+  },
+  "include": [
+    "static/typescript/**/*"
+  ],
+  "exclude": ["node_modules"]
+}

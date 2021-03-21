@@ -1,0 +1,32 @@
+{
+  "name": "dws",
+  "version": "1.0.0",
+  "description": "Scripts for project DWS",
+  "main": "static/js/main.js",
+  "author": "Shurik Beliy",
+  "license": "GPL-3.0",
+  "module": "static/js/main.es.js",
+  "files": [
+    "build"
+  ],
+  "types": "static/typesctipt/main.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "devDependencies": {
+    "rollup": "^2.38.4",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShurikBeliy/dws.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShurikBeliy/dws/issues"
+  },
+  "homepage": "https://github.com/ShurikBeliy/dws#readme"
+}
