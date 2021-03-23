@@ -1,6 +1,7 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.http.response import Http404
 from typing import Union
 import logging
 
@@ -14,7 +15,7 @@ class BaseView(View):
         except Exception as e:
             extra={'method':request.method, 'url': request.build_absolute_uri()}
             logger.error('Exception is: {}'.format(e), extra=extra)
-            response = Page404Detail.get_response(request)
+            raise Http404('The requested URL was not found on this server.')
 
         if isinstance(response,(dict,list)):
             return self._response(response)
@@ -28,18 +29,6 @@ class BaseView(View):
             status=status,
             safe=not isinstance(data, list)
         )
-
-class Page404Detail(BaseView):
-    """ View for page 404 """
-    def get(self, request) -> HttpResponse:
-        return self.get_response(request)
-
-    @staticmethod
-    def get_response(request) -> HttpResponse:
-        """ Return page 404 """
-        response = render(request, '404.html', {})
-        response.status_code = 404
-        return response
 
 class IndexDetail(BaseView):
     """ View for index page """
