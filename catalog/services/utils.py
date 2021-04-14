@@ -1,4 +1,4 @@
-import PIL
+from PIL import Image
 import os
 import logging
 from typing import Union
@@ -16,10 +16,10 @@ def change_filename_extension(filename, extension) -> str:
     path = os.path.splitext(filename)[:1] + (extension,)
     return '.'.join(path)
 
-def resize_image_to_width_and_return_pil_image(image, to_width) -> PIL.Image:
+def resize_image_to_width_and_return_pil_image(image, to_width) -> Image:
     """ Resize image to width. Height will change accordingly. """
     filepath = image.path
-    image = PIL.Image.open(filepath)
+    image = Image.open(filepath)
     image = image.resize( ( to_width, round( image.height * ( to_width / image.width ) ) ) )
     return image
 
@@ -37,7 +37,7 @@ def get_image_url_by_type(image, image_type='webp', image_width=None) -> str:
         image_path = add_suffix_to_filename(image_path, suffix)
         image_url = add_suffix_to_filename(image_url, suffix)
     if not os.path.exists(image_path):
-        pli_image = PIL.Image.open(image.path)
+        pli_image = Image.open(image.path)
         if image_width:
             pli_image = resize_image_to_width_and_return_pil_image(image, image_width)
         convert_image_type_and_save(pli_image, image_type, image_path)
