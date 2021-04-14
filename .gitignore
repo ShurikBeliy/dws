@@ -7,3 +7,6 @@ logs/
 media/
 node_modules/
 package-lock.json
+static/admin/
+gunicorn_config.py
+bin/
