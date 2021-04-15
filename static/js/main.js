@@ -9,6 +9,10 @@
       /* Run app */
       App.prototype.run = function () {
           console.log('Run app.');
+          this.control.setFilterCallback(this.runFilterCallback);
+      };
+      App.prototype.runFilterCallback = function (filters) {
+          console.log(filters);
       };
       return App;
   }());
@@ -63,6 +67,7 @@
       function ControlElement(selector, element) {
           this.selector = null;
           this.element = null;
+          this.filterCallbackHandler = null;
           this.selector = selector;
           this.element = element;
           this.init(this.selector);
@@ -71,6 +76,9 @@
           this.selector = selector;
           if (this.selector != null)
               this.element = document.querySelector(this.selector);
+      };
+      ControlElement.prototype.getElement = function () {
+          return this.element;
       };
       return ControlElement;
   }());
@@ -101,6 +109,7 @@
       }
       Control.prototype.init = function () {
           this.controlFilterElements = this.initFilter();
+          this.listenFilter();
       };
       Control.prototype.initFilter = function () {
           var filterSelector = config.selector.filter.selector;
@@ -112,6 +121,20 @@
               filterElements.push(new CheckboxElement(null, element));
           }
           return filterElements;
+      };
+      Control.prototype.listenFilter = function () {
+          var _this = this;
+          for (var _i = 0, _a = this.controlFilterElements; _i < _a.length; _i++) {
+              var filter = _a[_i];
+              filter.getElement().addEventListener("change", function () { return _this.runFilterCallback(); });
+          }
+      };
+      Control.prototype.runFilterCallback = function () {
+          if (this.filterCallbackHandler != null)
+              this.filterCallbackHandler(this.controlFilterElements);
+      };
+      Control.prototype.setFilterCallback = function (callback) {
+          this.filterCallbackHandler = callback;
       };
       return Control;
   }());

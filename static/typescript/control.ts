@@ -1,9 +1,14 @@
 import {config} from './config'
 
-class ControlElement {
+interface CallbackOneParam<T1, T2 = void> {
+  (param: T1): T2;
+}
+
+export class ControlElement {
 
   private selector:string = null;
   private element:HTMLElement = null;
+  private filterCallbackHandler:CallbackOneParam<Array<ControlElement>> = null;
 
   constructor(selector?:string, element?:HTMLElement) {
     this.selector = selector!;
@@ -15,6 +20,10 @@ class ControlElement {
     this.selector = selector!;
     if(this.selector != null)
       this.element = document.querySelector(this.selector) as HTMLElement;
+  }
+
+  public getElement():HTMLElement {
+    return this.element;
   }
 }
 
@@ -47,6 +56,7 @@ export class Control {
 
   public init(){
     this.controlFilterElements = this.initFilter();
+    this.listenFilter();
   }
 
   private initFilter():Array<ControlElement> {
@@ -60,5 +70,19 @@ export class Control {
     }
 
     return filterElements;
+  }
+
+  private listenFilter() {
+    for(const filter of this.controlFilterElements)
+      filter.getElement().addEventListener("change", () => this.runFilterCallback());
+  }
+
+  private runFilterCallback() {
+    if(this.filterCallbackHandler != null)
+      this.filterCallbackHandler(this.controlFilterElements);
+  }
+
+  public setFilterCallback(callback: CallbackOneParam<Array<ControlElement>>) {
+    this.filterCallbackHandler = callback;
   }
 }

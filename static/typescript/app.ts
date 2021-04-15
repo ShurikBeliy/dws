@@ -1,3 +1,5 @@
+import {ControlElement} from './control'
+
 export class App {
   private control:Control = null;
 
@@ -8,5 +10,10 @@ export class App {
   /* Run app */
   public run() {
     console.log('Run app.');
+    this.control.setFilterCallback(this.runFilterCallback);
+  }
+
+  private runFilterCallback(filters:Array<ControlElement>) {
+    console.log(filters);
   }
 }
