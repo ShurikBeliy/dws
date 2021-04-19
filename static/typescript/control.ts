@@ -41,6 +41,12 @@ class CheckboxElement extends ControlElement {
     if( this.element != null )
       this.element.value = value;
   }
+
+  public isChecked(): boolean | null {
+    if( this.element != null )
+      return this.element.checked;
+    return null;
+  }
 }
 
 export class Control {

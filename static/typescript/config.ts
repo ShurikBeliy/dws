@@ -1,5 +1,4 @@
 export const config = {
-
   selector: { // our selectors for different elements
     selector:'html',
     filter: { // our selectors for filters
@@ -10,7 +9,18 @@ export const config = {
           selector: '.checkbox',
         }
       }
+    },
+    catalog: {
+      selector: '.catalog',
+      item: {
+        selector: '.catalog__item',
+      }
     }
   },
-
+  request: {
+    json_path: 'json/',
+    catalog: {
+      filter_name: 'filter',
+    }
+  }
 }
