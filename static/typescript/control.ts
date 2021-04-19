@@ -1,8 +1,5 @@
 import {config} from './config'
-
-interface CallbackOneParam<T1, T2 = void> {
-  (param: T1): T2;
-}
+import {CallbackOneParam} from './utils'
 
 export class ControlElement {
 
